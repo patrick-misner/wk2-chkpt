@@ -90,7 +90,7 @@ function drawUpgrades () {
     <tr>
     <th scope="row" id="${clickUpgrade.id}-qty">${clickUpgrade.quantity}</th>
     <td>${clickUpgrade.name}</td>
-    <td>${clickUpgrade.price}</td>
+    <td id="${clickUpgrade.id}-price">${clickUpgrade.price}</td>
     <td>x${clickUpgrade.multiplier}</td>
     <td><button type="button" class="btn btn-secondary" onclick="buyUpgrade(${clickUpgrade.id})">Buy</button></td>
   </tr>
@@ -107,7 +107,7 @@ function drawAutomaticUpgrades() {
     <tr>
     <th scope="row" id="${automaticUpgrade.id}-qty">${automaticUpgrade.quantity}</th>
     <td>${automaticUpgrade.name}</td>
-    <td>${automaticUpgrade.price}</td>
+    <td id="${automaticUpgrade.id}-price">${automaticUpgrade.price.toFixed(4)}</td>
     <td>x${automaticUpgrade.multiplier}</td>
     <td><button type="button" class="btn btn-secondary" onclick="buyAutomaticUpgrade(${automaticUpgrade.id})">Buy</button></td>
   </tr>
@@ -139,6 +139,9 @@ function buyUpgrade(clickupgradeid){
     updateBitcoin()
     document.getElementById(clickUpgrade.id + '-qty').innerText = clickUpgrade.quantity
     multiplier += clickUpgrade.multiplier
+    clickUpgrade.price = clickUpgrade.price * 1.25
+    document.getElementById(clickUpgrade.id + '-price').innerHTML = clickUpgrade.price.toFixed(4)
+    
   }
   }
 }
@@ -152,6 +155,8 @@ function buyAutomaticUpgrade(automaticupgradeid){
       updateBitcoin()
       console.log(automaticUpgrade.id)
       document.getElementById(automaticUpgrade.id + '-qty').innerText = automaticUpgrade.quantity
+      automaticUpgrade.price = automaticUpgrade.price * 1.25
+      document.getElementById(automaticUpgrade.id + '-price').innerHTML = automaticUpgrade.price.toFixed(4)
     }
   }
 }
