@@ -39,28 +39,28 @@ let automaticUpgrades = {
     name: 'Automate Mining',
     price: 0.50,
     quantity: 0,
-    multiplier: 20
+    multiplier: 200
   },
   watercool: {
     id: 6,
     name: 'Water cooling',
     price: 1,
     quantity: 0,
-    multiplier: 50
+    multiplier: 500
   },
   accompressor: {
     id: 7,
     name: 'Air Conditioning',
-    price: 10,
+    price: 5,
     quantity: 0,
-    multiplier: 100
+    multiplier: 1000
   },
   serverfarm: {
     id: 8,
     name: 'Server Farm',
-    price: 150,
+    price: 10,
     quantity: 0,
-    multiplier: 1000
+    multiplier: 100000
   }
 }
 
@@ -72,6 +72,18 @@ function mine() {
   bitcoin += 0.0001 * multiplier
   networth = bitcoin * 29000
   updateBitcoin()
+  for(const key in clickUpgrades){
+    let clickUpgrade = clickUpgrades[key]
+    if (bitcoin >= clickUpgrade.price){
+      document.getElementById(clickUpgrade.id + '-button').removeAttribute('disabled')
+    }
+  }
+  for(const key in automaticUpgrades){
+    let automaticUpgrade = automaticUpgrades[key]
+    if (bitcoin >= automaticUpgrade.price){
+      document.getElementById(automaticUpgrade.id + '-button').removeAttribute('disabled')
+    }
+  }
 }
 
 
@@ -92,7 +104,7 @@ function drawUpgrades () {
     <td>${clickUpgrade.name}</td>
     <td id="${clickUpgrade.id}-price">${clickUpgrade.price}</td>
     <td>x${clickUpgrade.multiplier}</td>
-    <td><button type="button" class="btn btn-secondary" onclick="buyUpgrade(${clickUpgrade.id})">Buy</button></td>
+    <td><button type="button" class="btn btn-secondary" id="${clickUpgrade.id}-button" onclick="buyUpgrade(${clickUpgrade.id})" disabled>Buy</button></td>
   </tr>
     `
   document.getElementById("click-upgrades").innerHTML = template
@@ -109,7 +121,7 @@ function drawAutomaticUpgrades() {
     <td>${automaticUpgrade.name}</td>
     <td id="${automaticUpgrade.id}-price">${automaticUpgrade.price.toFixed(4)}</td>
     <td>x${automaticUpgrade.multiplier}</td>
-    <td><button type="button" class="btn btn-secondary" onclick="buyAutomaticUpgrade(${automaticUpgrade.id})">Buy</button></td>
+    <td><button type="button" class="btn btn-secondary" id="${automaticUpgrade.id}-button" onclick="buyAutomaticUpgrade(${automaticUpgrade.id})" disabled>Buy</button></td>
   </tr>
     `
     document.getElementById("automatic-upgrades").innerHTML = template
@@ -129,9 +141,6 @@ function buyUpgrade(clickupgradeid){
   for (const key in clickUpgrades){
   let clickUpgrade = clickUpgrades[key]
 
-
-
-
     //this compares each ID to the one that is clicked
   if(clickUpgrade.id == clickupgradeid && bitcoin >= clickUpgrade.price){
     clickUpgrade.quantity++
@@ -141,8 +150,17 @@ function buyUpgrade(clickupgradeid){
     multiplier += clickUpgrade.multiplier
     clickUpgrade.price = clickUpgrade.price * 1.25
     document.getElementById(clickUpgrade.id + '-price').innerHTML = clickUpgrade.price.toFixed(4)
-    
+
   }
+  if (bitcoin < clickUpgrade.price){
+    document.getElementById(clickUpgrade.id + '-button').setAttribute('disabled', '')
+  }
+  }
+  for (const key in automaticUpgrades){
+    let automaticUpgrade = automaticUpgrades[key]
+    if (bitcoin < automaticUpgrade.price){
+      document.getElementById(automaticUpgrade.id + '-button').setAttribute('disabled', '')
+    }
   }
 }
 
@@ -158,6 +176,15 @@ function buyAutomaticUpgrade(automaticupgradeid){
       automaticUpgrade.price = automaticUpgrade.price * 1.25
       document.getElementById(automaticUpgrade.id + '-price').innerHTML = automaticUpgrade.price.toFixed(4)
     }
+    if (bitcoin < automaticUpgrade.price){
+      document.getElementById(automaticUpgrade.id + '-button').setAttribute('disabled', '')
+    }
+  }
+  for (const key in clickUpgrades){
+    let clickUpgrade = clickUpgrades[key]
+    if (bitcoin < clickUpgrade.price){
+      document.getElementById(clickUpgrade.id + '-button').setAttribute('disabled', '')
+    }   
   }
 }
 
@@ -176,8 +203,18 @@ function collectAutoUpgrades() {
       bitcoin += 0.0001 * (automaticUpgrade.quantity * automaticUpgrade.multiplier)
       updateBitcoin()
     }
+    if (bitcoin >= automaticUpgrade.price){
+      document.getElementById(automaticUpgrade.id + '-button').removeAttribute('disabled')
+    }
+  }
+  for(const key in clickUpgrades){
+    let clickUpgrade = clickUpgrades[key]
+    if (bitcoin >= clickUpgrade.price){
+      document.getElementById(clickUpgrade.id + '-button').removeAttribute('disabled')
+    }
   }
 }
+
 
 drawUpgrades()
 drawAutomaticUpgrades()
