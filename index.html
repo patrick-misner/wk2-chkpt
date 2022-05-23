@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>🕹Click Miner🕹</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
+
+  <!-- Bootstrap CSS v5.0.2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
+
+    body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+    }
+
+    body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
+</head>
+
+<body class="">
+
+
+  <header class="p-3 text-center my-card card-bg">
+    <h1>Click Miner</h1>
+  </header>
+
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-4 order-md-1">
+          <div class="card-bg rounded text-center p-2 m-4">
+            <img class="img-fluid" src="assets/videocard.png" onclick="mine()" alt="">
+            <div class="text-center">
+              <h3 id="card-name">Geforce II Ultra</h3>
+            </div>
+
+          </div>
+        </div>
+
+        lorem*45
+
+        <div class="col-md-4 order-md-2">
+          <div class="card-bg rounded shadow p-2 m-4 d-flex justify-content-around">
+            <h3 id="bitcoin-total" class="p-2">Bitcoins: 0.000</h3>
+            <h3 id="networth" class="p-2">USD Value: $0.00</h3>
+          </div>
+
+        </div>
+        
+        <div class="col-md-4 order-md-0">
+          <div class="card-bg rounded shadow p-2 m-4">
+            <div class="text-center pt-3">
+              <h3>GPU Upgrades</h3>
+            </div>
+
+            <div class="row text-center pt-3">
+
+              <div class="col-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Qty</th>
+                      <th scope="col">GPU</th>
+                      <th scope="col">Price(bitcoin)</th>
+                      <th scope="col">Multiplier</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="click-upgrades">
+                    <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>Card NAME</td>
+                    <td>$200</td>
+                    <td>multiplier</td>
+                    <td><button type="button" class="btn btn-secondary" onclick="buyUpgrade()">Buy</button></td>
+                  </tr> -->
+                  </tbody>
+                </table>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      
+
+        <div class="col-md-4 order-md-3">
+          <div class="card-bg rounded shadow p-2 m-4">
+            <div class="text-center pt-3">
+              <h3>Automatic Upgrades</h3>
+            </div>
+
+            <div class="row text-center pt-3">
+
+              <div class="col-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Qty</th>
+                      <th scope="col">Upgrade</th>
+                      <th scope="col">Price(bitcoin)</th>
+                      <th scope="col">Multiplier</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="automatic-upgrades">
+                    <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>Card NAME</td>
+                    <td>$200</td>
+                    <td>multiplier</td>
+                    <td><button type="button" class="btn btn-secondary" onclick="buyUpgrade()">Buy</button></td>
+                  </tr> -->
+                  </tbody>
+                </table>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  </main>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

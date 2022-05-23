@@ -1,0 +1,32 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#bc32f6",
+    "activityBar.activeBorder": "#5c4204",
+    "activityBar.background": "#bc32f6",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#5c4204",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "sash.hoverBorder": "#bc32f6",
+    "statusBar.background": "#a80aeb",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#bc32f6",
+    "statusBarItem.remoteBackground": "#a80aeb",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#a80aeb",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#a80aeb99",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#a80aeb",
+  "cSpell.ignoreWords": [
+    "clickUpgrade",
+    "clickupgradeid",
+    "geforce",
+    "radeon",
+    "watercool"
+  ],
+  "cSpell.words": [
+    "clickUpgrade"
+  ]
+}
